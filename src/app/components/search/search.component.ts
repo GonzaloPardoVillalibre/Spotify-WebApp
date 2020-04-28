@@ -14,7 +14,7 @@ export class SearchComponent{
     console.log(termino);
     this.spotify.getArtist(termino).subscribe((data: any) => {
      console.log(data.artists.items);
-     this.nuevosArtistas = data.artists.items;
+     this.nuevosArtistas =  data.artists.items;
     });
   }
 }
