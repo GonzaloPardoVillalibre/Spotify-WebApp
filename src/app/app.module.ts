@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 
 // Configuración de las rutas de la applicación desde el fichero /app.routes
 import { RouterModule } from '@angular/router';
@@ -21,7 +22,8 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     HomeComponent,
     SearchComponent,
     NavbarComponent,
-    NoimagePipe
+    NoimagePipe,
+    TarjetasComponent
   ],
   imports: [
     BrowserModule,
