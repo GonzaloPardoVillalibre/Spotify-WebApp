@@ -1,0 +1,42 @@
+<app-loading *ngIf="loading"></app-loading>
+<div *ngIf="!loading" class="card text-white bg-dark mb-3 m-5 mx-auto display:block" style="width: 18rem;">
+    <div class="text-center text-white m-3 animated fadeIn">
+        <img class="card-img-top mx-auto d-block" [src]="artista.images | noimage" class="img-thumbnail img-circle" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title text-white">{{artista.name}}</h5>
+            <p class="card-text text-white">{{artista.genres[0] | uppercase}}</p>
+            <a [href]="artista.external_urls.spotify" target="_blank" class="btn btn-primary">Ir a la pagina del artista</a>
+            <p></p>
+            <a href="home" class="btn btn-outline-danger">Go back home</a>
+        </div>
+    </div>
+</div>
+
+<div class="containe">
+    <div class="row justify-content-md-center">
+        <div class="col-auto">
+            <table class="table table-responsive table-black text-white table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Album</th>
+                        <th scope="col">Cancion</th>
+                        <th scope="col">Vista Previa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let track of topTracks">
+                        <th scope="row">
+                            <img [src]="track.album.images | noimage" class="card-img-top" class="img-thumb">
+                        </th>
+                        <td>{{track.album.name}}</td>
+                        <td>{{track.name}}</td>
+                        <td>
+                            <audio *ngIf="track.preview_url" [src]="track.preview_url" controls>Preview URL</audio>
+                            <a *ngIf="!track.preview_url" class="btn btn-outline-danger">No preview URL</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

@@ -15,7 +15,7 @@ export class SpotifyService {
     const url = `https://api.spotify.com/v1/${query}`;
 
     const headers = new HttpHeaders({
-      Authorization: 'Bearer BQBOxYDtN05lDAuLNEokgGE8xNLsyYxqdo1ErlPkdlwUAT2PsYMEfflfl_u5BJCJsKwPyrvGKsRogh2OnqU'
+      Authorization: 'Bearer BQAnqqKStnNy7g9Gj3X3TwxHjPEDyCfV6X5h-XnaIcNr9XOiYtgj5SKFPqgIttV7vothSlVEBJo9pQ0K29k'
     });
 
     return this.http.get(url, {headers});
@@ -29,8 +29,20 @@ export class SpotifyService {
   }
 
   // Funcion para coger la lista de artistas buscados mediante una cadena "termino" que tipicamente vendrá del search
-  getArtist(termino: string){
+  getArtists(termino: string){
     return this.getQuery(`search?q=${termino}&type=artist`)
       .pipe(map(data => data['artists'].items));
   }
+
+  // Funcion que sirve para coger un solo artista
+  getArtist(id: string){
+    return this.getQuery(`artists/${id}`);
+  }
+
+  // Funcion para coger los tops tracks de un artista
+  getTopTracks(id: string){
+    return this.getQuery(`artists/${id}/top-tracks/?country=ES`)
+    .pipe(map(data => data['tracks']));
+  }
+
 }
