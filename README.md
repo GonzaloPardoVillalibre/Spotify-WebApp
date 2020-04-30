@@ -2,6 +2,29 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
 
+## Deploying requirement
+To properly deploy this application a user token must be generated. I recommend using `postman` for this pourpose with the following request:
+
+   
+ ``` 
+ {  
+    POST: `https://accounts.spotify.com/api/token` 
+    {
+        Headers: {
+            Content-Type:"application/x-www-form-urlencoded"   
+        },
+        Body: {
+            grant_type: "client_credentials",
+            client_id:"application-client-id-for-spotify",
+            client_secret:"application-client-secret-for-spotify"
+        }
+    }
+ }
+```
+- Client_id and client_secret are not provided by developer.
+
+When generated, the token must be copied in the following path `src/app/services/spotify.service.ts` (line 18)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
