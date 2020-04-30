@@ -1,4 +1,12 @@
-<app-loading *ngIf="loading"></app-loading>
+<app-loading *ngIf="loading && !error"></app-loading>
+
+<div *ngIf="error" class="alert alert-danger" role="alert">
+    <h3>Error</h3>
+    <p>
+        {{errorMessage}}
+    </p>
+</div>
+
 <div *ngIf="!loading" class="card text-white bg-dark mb-3 m-5 mx-auto display:block" style="width: 18rem;">
     <div class="text-center text-white m-3 animated fadeIn">
         <img class="card-img-top mx-auto d-block" [src]="artista.images | noimage" class="img-thumbnail img-circle" alt="Card image cap">
@@ -32,8 +40,7 @@
                         <td>{{track.album.name}}</td>
                         <td>{{track.name}}</td>
                         <td>
-                            <audio *ngIf="track.preview_url" [src]="track.preview_url" controls>Preview URL</audio>
-                            <a *ngIf="!track.preview_url" class="btn btn-outline-danger">No preview URL</a>
+                            <iframe [src]="track.uri | domseguro:'https://open.spotify.com/embed?uri='" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                         </td>
                     </tr>
                 </tbody>

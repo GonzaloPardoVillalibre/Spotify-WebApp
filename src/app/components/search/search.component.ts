@@ -10,7 +10,8 @@ export class SearchComponent {
   loading: boolean;
   nuevosArtistas: any[] = [];
   constructor(private spotify: SpotifyService) {}
-
+  error: any;
+  errorMessage: string;
   buscar(termino: string) {
     if (termino.length === 0) {
       return null;
@@ -21,6 +22,10 @@ export class SearchComponent {
       console.log(data);
       this.nuevosArtistas = data;
       this.loading = false;
+    }, (errorServicio) => {
+      console.log(errorServicio);
+      this.error = true;
+      this.errorMessage = errorServicio.error.error.message;
     });
   }
 }
