@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
 
 ## Deploying requirement
-To properly deploy this application a user token must be generated. I recommend using `postman` for this pourpose with the following request:
+To properly deploy this application a user token must be generated. I recommend using [POSTMAN](https://www.postman.com) for this pourpose with the following request:
 
    
  ``` 
